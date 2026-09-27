@@ -1,0 +1,8 @@
+target/
+.idea/
+*.iml
+.vscode/
+*.log
+tmp/
+Lab*_отчет_*.docx
+Lab*_отчет_*.pdf

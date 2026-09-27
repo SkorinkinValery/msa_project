@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: travel-journal
+  datasource:
+    url: jdbc:h2:mem:travel_journal
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  flyway:
+    enabled: false
+  cloud:
+    openfeign:
+      client:
+        config:
+          destination-guide:
+            connect-timeout: 2000
+            read-timeout: 2000
+            logger-level: basic
+
+destination-guide:
+  url: ${DESTINATION_GUIDE_URL:http://localhost:8080}
+
+logging:
+  level:
+    by.msa.traveljournal.client.DestinationGuideClient: DEBUG
+
+server:
+  port: 8080
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
